@@ -1,0 +1,15 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int[] res = new int[2];
+
+        ArrayList<Integer> arrlst = new ArrayList<Integer>();
+        for(int i: nums){
+            arrlst.add(i);
+        }
+
+        res[0] = arrlst.indexOf(target);
+        res[1] = arrlst.lastIndexOf(target);
+
+        return res;
+    }
+}
