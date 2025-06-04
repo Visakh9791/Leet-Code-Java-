@@ -1,0 +1,17 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        HashMap<Integer,Integer> file = new HashMap<>();
+        int n = nums.length/2;
+
+        for(int num : nums){
+            file.put(num, file.getOrDefault(num,0)+1);
+
+            if(file.get(num) > n){
+                return num;
+        }
+
+        }
+        return -1;
+        
+    }
+}
