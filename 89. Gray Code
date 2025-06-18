@@ -1,0 +1,26 @@
+import java.util.*;
+
+public class Solution {
+    public static List<Integer> grayCode(int n) {
+        List<Integer> result = new ArrayList<>();
+        result.add(0);
+
+        for (int i = 0; i < n; i++) {
+            int size = result.size();
+            int addOn = 1 << i; 
+
+            
+            for (int j = size - 1; j >= 0; j--) {
+                result.add(result.get(j) + addOn);
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int n = 2;
+        List<Integer> grayCodes = grayCode(n);
+        System.out.println("Gray code for n = " + n + ": " + grayCodes);
+    }
+}
