@@ -1,0 +1,51 @@
+class Solution {
+    public int matrixScore(int[][] grid) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+
+        
+        for (int i = 0; i < rows; i++) {
+            if (grid[i][0] == 0) {
+                flipRow(grid, i);
+            }
+        }
+
+       
+        for (int j = 1; j < cols; j++) {
+            int countOnes = 0;
+            for (int i = 0; i < rows; i++) {
+                if (grid[i][j] == 1) {
+                    countOnes++;
+                }
+            }
+            if (countOnes < rows - countOnes) {
+                flipCol(grid, j);
+            }
+        }
+
+        
+        int score = 0;
+        for (int i = 0; i < rows; i++) {
+            int rowValue = 0;
+            for (int j = 0; j < cols; j++) {
+                rowValue = (rowValue << 1) | grid[i][j];
+            }
+            score += rowValue;
+        }
+
+        return score;
+    }
+
+    
+    private void flipRow(int[][] grid, int row) {
+        for (int j = 0; j < grid[0].length; j++) {
+            grid[row][j] ^= 1;
+        }
+    }
+
+    private void flipCol(int[][] grid, int col) {
+        for (int i = 0; i < grid.length; i++) {
+            grid[i][col] ^= 1;
+        }
+    }
+}
